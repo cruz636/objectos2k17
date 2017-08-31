@@ -8,22 +8,19 @@ object plantaNuclear{
 	method cargamento(_barras){barrasDeUranio = _barras}
 	
 	
-	method estaEnPeligro(){
-		if ((barrasDeUranio > 10000) && empleado.estaDistraido() or jefe.estaPobre()){
-			return "En peligro"
-		}else{return "No esta en peligro"}
-	}
+	method estaEnPeligro()= barrasDeUranio > 10000 && empleado.estaDistraido() or jefe.estaPobre()
+	
 
 }
 
 object mrBurns{
-	var millonario = "si"
+	var millonario = True
 	
 	method millonario()=millonario
 	
-	method estaPobre()= self.millonario() == "no"
+	method estaPobre()= self.millonario() 
 	
-	method perderFortuna(){millonario = "no"}
+	method perderFortuna(){millonario = False}
 }
 
 object homero{
