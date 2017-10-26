@@ -1,0 +1,97 @@
+class Planeta {
+	var habitantes = []
+	
+	method entrarEnGuerra() 
+}
+
+
+
+class Habitantes {
+	var valentia
+	var inteligencia
+	
+	constructor ( _valentia,_inteligencia){
+		valentia = _valentia
+		inteligencia = _inteligencia
+	}
+	
+	method poder()= valentia + inteligencia
+}
+
+class Soldado inherits Habitantes{
+	
+	var equipamiento = []
+	
+	constructor(_valentia,_inteligencia,_equipamiento)=super(_valentia,_inteligencia){
+		equipamiento = _equipamiento		
+	}
+	
+	method equipamiento()=equipamiento
+	method agregarItem(_item)= equipamiento.add(_item)
+	override method poder()= valentia + inteligencia + self.poderDeEquipamiento()
+	
+	method poderDeEquipamiento() = equipamiento.sum{item => item.potencia()}
+}
+
+class Maestro inherits Habitantes {
+	 var sableDeLoz
+	 var midiclorianos
+	 var tiempoEnSuLado
+	
+	 
+	 constructor(_valentia,_inteligencia,_sableDeLoz,_midiclorianos,_tiempoEnSuLado)=super(_valentia,_inteligencia){
+	 	sableDeLoz = _sableDeLoz
+	 	midiclorianos = _midiclorianos
+	 	tiempoEnSuLado = _tiempoEnSuLado
+	 }
+	 method tiempoEnSuLado() = tiempoEnSuLado
+}
+
+class Jedi inherits Maestro {
+	
+		constructor(_valentia,_inteligencia,_sableDeLoz,_midiclorianos,_tiempoDeLoz)=super(_valentia,_inteligencia,_sableDeLoz,_midiclorianos,_tiempoDeLoz){
+	 	
+	 }
+	
+	override method poder() = valentia + inteligencia + (midiclorianos/1000) + sableDeLoz.potencia() * self.tiempoEnSuLado()
+}
+
+class Sith inherits Maestro {
+	
+	
+	constructor(_valentia,_inteligencia,_sableDeLoz,_midiclorianos,_tiempoDeOscuridad)=super(_valentia,_inteligencia,_sableDeLoz,_midiclorianos,_tiempoDeOscuridad){
+	 		 }
+	
+	
+		
+	override method poder() = valentia + inteligencia + (midiclorianos/1000) + sableDeLoz.potencia() * 2 + self.tiempoEnSuLado()
+}
+
+
+
+
+
+class Item{
+	var potencia
+	var nombre
+	
+	constructor(_nombre,_potencia){
+		nombre = _nombre
+		potencia = _potencia
+	}
+	
+	method potencia()=potencia
+}
+
+class SableDeLoz {
+	var energia 
+	
+	constructor(_energia){
+		energia = _energia
+	}
+	
+	method energia()=energia
+	
+	
+	
+}
